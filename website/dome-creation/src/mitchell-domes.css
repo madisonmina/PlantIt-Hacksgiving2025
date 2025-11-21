@@ -1,0 +1,66 @@
+/*
+  mitchell-domes.css
+  Inspired by https://www.mitchellparkdomes.com/
+  Provides a simple typographic and color system, header/hero/footer
+  components, and some utility classes to match the site's look and feel.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+:root{
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --color-primary: #1f5a44; /* deep green */
+  --color-secondary: #2f7a62; /* teal */
+  --color-accent: #c9a24e; /* warm gold */
+  --color-bg: #f6f2eb; /* warm off-white */
+  --color-surface: #ffffff;
+  --color-muted: #6b6b6b;
+  --color-hero-text: #ffffff;
+  --max-width: 1100px;
+}
+
+/* Reset + base */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{font-family:var(--font-body);background:var(--color-bg);color:#18302b;margin:0;line-height:1.6}
+
+.container{width:90%;max-width:var(--max-width);margin:0 auto;padding:2rem 0}
+
+/* Header / Nav */
+.header{background:linear-gradient(180deg, rgba(0,0,0,0.03), transparent);padding:1rem 0}
+.header-inner{display:flex;align-items:center;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.75rem;font-family:var(--font-heading);font-size:1.25rem;color:var(--color-primary);text-decoration:none}
+.nav{display:flex;gap:1rem;margin-left:auto}
+.nav a{color:var(--color-primary);text-decoration:none;font-weight:600;padding:0.4rem 0.6rem;border-radius:4px}
+.nav a:hover{background:rgba(31,90,68,0.06)}
+
+/* Hero */
+.hero{position:relative;display:flex;align-items:center;min-height:50vh;color:var(--color-hero-text);background-size:cover;background-position:center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,20,15,0.45), rgba(10,20,15,0.15))}
+.hero .hero-content{position:relative;z-index:2;padding:4rem 0;width:100%}
+.hero h1{font-family:var(--font-heading);font-size:clamp(2rem,5vw,4rem);margin:0 0 0.5rem;color:var(--color-hero-text)}
+.hero p{font-size:1.125rem;color:rgba(255,255,255,0.92);max-width:60ch}
+
+/* Buttons */
+.btn{display:inline-block;padding:0.6rem 1rem;border-radius:6px;text-decoration:none;cursor:pointer;border:0;font-weight:600}
+.btn-primary{background:var(--color-accent);color:#111;box-shadow:0 6px 18px rgba(201,162,78,0.18)}
+.btn-outline{background:transparent;border:1px solid rgba(31,90,68,0.12);color:var(--color-primary)}
+
+/* Cards + grid */
+.card{background:var(--color-surface);border-radius:8px;padding:1rem;box-shadow:0 6px 18px rgba(20,30,25,0.06)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+
+/* Footer */
+.footer{padding:2rem 0;background:transparent;color:var(--color-muted);font-size:0.95rem}
+
+/* Utilities */
+.lead{font-size:1.15rem;color:var(--color-muted)}
+.small{font-size:0.9rem;color:var(--color-muted)}
+
+/* Responsive tweaks */
+@media (max-width:760px){
+  .nav{display:none}
+  .hero{min-height:40vh;padding:2rem 0}
+  .container{padding:1rem}
+}
