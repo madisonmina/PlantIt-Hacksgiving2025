@@ -1,0 +1,46 @@
+<!--Hacksgiving Project HTML 2025
+Names: Madison Mina-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Mode Map</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #000000; /* dark gray / blackish */
+            color: #000000; /* default text color in white */
+            margin: 0; /* remove default margin so SVG aligns perfectly */
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        img, svg {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .region {
+            stroke: #ffffff; /* outline in white so shapes are visible */
+            stroke-width: 2;
+        }
+  </style>
+</head>
+<body>
+
+    <div id="sidebar">
+    <div style="font-size: 36px; font-weight: bold; color: #ffffff;">FLOWERS</div>
+    <div class="plant" draggable="true" data-name="Silver-Dollar Fern">Silver-Dollar Fern</div>
+    <div class="plant" draggable="true" data-name="Maidenhair Fern">Maidenhair Fern</div>
+    <div class="plant" draggable="true" data-name="Bromeliad">Bromeliad</div>
+    </div>
+
+    <div id="map-container">
+    <div style="font-size: 36px; font-weight: bold; color: #ffffff;">Show Dome</div>
+    <img id="map" src="show_dome_map.png">
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
