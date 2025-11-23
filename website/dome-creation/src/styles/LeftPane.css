@@ -2,9 +2,90 @@
 .left-pane {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  align-items: center;
+  justify-content: flex-start; /* keep title at top */
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto; /* allow internal scrolling */
+  position: relative; /* establish containing block for sticky children */
     width: 25%;
     background-color: var(--color-primary);
 }
+
+/* Scoped scrollbar for left and right panes to avoid cascade/order differences */
+.left-pane::-webkit-scrollbar,
+.right-pane::-webkit-scrollbar {
+  width: 10px;
+}
+.left-pane::-webkit-scrollbar-track,
+.right-pane::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+.left-pane::-webkit-scrollbar-thumb,
+.right-pane::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+}
+.left-pane::-webkit-scrollbar-thumb:hover,
+.right-pane::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.title {
+    background-color: var(--color-secondary);
+    color: var(--color-hero-text);
+    top: 0;
+    width: 100%;
+    height: 3rem;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* center text inside title */
+    padding: 0.75rem 1rem;
+    z-index: 20; /* keep above scrolling content */
+}
+
+/* Ensure content inside the pane is centered */
+.left-pane .pane-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center content within remaining space */
+  text-align: center;
+  width: 100%;
+  flex: 1 1 auto; /* allow pane-content to take remaining height */
+  color: var(--color-hero-text)
+}
+
+/* Styles ported from ChooseForm's styled-components to class-based rules
+   so pane content can use the same look even when components use plain classes. */
+.sidebar-container{height:100%;color:var(--color-body);padding:20px;overflow-y:auto}
+.sidebar-container .title{font-size:1.5rem;margin-bottom:1rem;color:var(--color-surface);font-weight:600}
+
+.pane-content p{
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom:2px solid rgba(0,0,0,0.06);
+    border-radius:6px;
+    cursor:pointer;
+    position:relative;
+    font-weight: 550;
+    margin-top: 12px;
+    margin-bottom: 0;
+
+}
+.pane-content p{transition:opacity 0.12s ease}
+.pane-content p:hover{background-color:transparent;box-shadow:none;opacity:0.95}
+.pane-content p:hover{opacity:0.35}
+
+.pane-content .action-buttons{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity 0.15s ease;z-index:5}
+.pane-content p:hover .action-buttons{opacity:1;pointer-events:auto}
+
+.pane-content .icon-btn{background:transparent;border:1px solid rgba(0,0,0,0.08);padding:6px 8px;border-radius:4px;cursor:pointer;font-size:0.9rem;display:inline-flex;align-items:center;justify-content:center;min-width:36px}
+.pane-content .edit-btn{background:var(--color-surface)}
+.pane-content .delete-btn{background:#ffecec;color:#9a1f1f;border-color:#ffd6d6}
+
+.pane-content .error-banner{background:#ffe6e6;color:#7a1f1f;border:1px solid #f5c2c2;padding:10px 12px;margin-bottom:12px;border-radius:6px;display:flex;justify-content:space-between;align-items:center}
+.pane-content .close-btn{background:transparent;border:none;color:inherit;cursor:pointer;font-weight:700;font-size:1rem}
+
+/* Utility: make cards inside pane-content full-width */
+.pane-content .card{width:100%}

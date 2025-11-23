@@ -20,9 +20,12 @@
   --max-width: 1100px;
 }
 
+
 /* Reset + base */
 *{box-sizing:border-box}
-html,body,#root{height:100%}
+html,body,#root{
+  height:100%
+}
 body{font-family:var(--font-body);background:var(--color-bg);color:#18302b;margin:0;line-height:1.6}
 
 /* Header / Nav */
@@ -119,3 +122,25 @@ body{font-family:var(--font-body);background:var(--color-bg);color:#18302b;margi
 @media (max-width:760px){
   .dome-cut{display:none}
 }
+
+/* Theme-level scrollbar token: keep visuals centralized but scoped to panes
+   Use `.left-pane` and `.right-pane` so both side panes show identical scrollbars. */
+.left-pane,
+.right-pane{
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) var(--color-primary);
+}
+
+/* WebKit browsers (Chrome, Edge, Safari) - scoped to pane classes */
+.left-pane::-webkit-scrollbar,
+.right-pane::-webkit-scrollbar{width:10px}
+.left-pane::-webkit-scrollbar-track,
+.right-pane::-webkit-scrollbar-track{background:var(--color-bg);border-radius:999px}
+.left-pane::-webkit-scrollbar-thumb,
+.right-pane::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--color-secondary),var(--color-primary));border-radius:999px;border:3px solid transparent;background-clip:padding-box}
+.left-pane::-webkit-scrollbar-thumb:hover,
+.right-pane::-webkit-scrollbar-thumb:hover{filter:brightness(.95)}
+
+/* small refinement for horizontal scroll if present */
+.left-pane::-webkit-scrollbar-corner,
+.right-pane::-webkit-scrollbar-corner{background:transparent}
