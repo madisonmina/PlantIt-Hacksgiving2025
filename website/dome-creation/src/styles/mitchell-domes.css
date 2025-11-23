@@ -1,0 +1,146 @@
+/*
+  mitchell-domes.css
+  Inspired by https://www.mitchellparkdomes.com/
+  Provides a simple typographic and color system, header/hero/footer
+  components, and some utility classes to match the site's look and feel.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+:root{
+  --font-heading: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --color-primary: #1c3a0e; /* deep green */
+  --color-secondary: #98bb6c; /* teal */
+  --color-accent: #c9a24e; /* warm gold */
+  --color-bg: #f6f4ec; /* warm off-white */
+  --color-surface: #ffffff;
+  --color-muted: #6b6b6b;
+  --color-hero-text: #ffffff;
+  --max-width: 1100px;
+}
+
+
+/* Reset + base */
+*{box-sizing:border-box}
+html,body,#root{
+  height:100%
+}
+body{font-family:var(--font-body);background:var(--color-bg);color:#18302b;margin:0;line-height:1.6}
+
+/* Header / Nav */
+.header{background:linear-gradient(180deg, rgba(0,0,0,0.03), transparent);padding:1rem 0}
+.header-inner{display:flex;align-items:center;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.75rem;font-family:var(--font-heading);font-size:1.25rem;color:var(--color-primary);text-decoration:none}
+.nav{display:flex;gap:1rem;margin-left:auto}
+.nav a{color:var(--color-primary);text-decoration:none;font-weight:600;padding:0.4rem 0.6rem;border-radius:4px}
+.nav a:hover{background:rgba(31,90,68,0.06)}
+
+/* Hero */
+.hero{position:relative;display:flex;align-items:center;min-height:50vh;color:var(--color-hero-text);background-size:cover;background-position:center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,20,15,0.45), rgba(10,20,15,0.15))}
+.hero .hero-content{position:relative;z-index:2;padding:4rem 0;width:100%}
+.hero h1{font-family:var(--font-heading);font-size:clamp(2rem,5vw,4rem);margin:0 0 0.5rem;color:var(--color-hero-text)}
+.hero p{font-size:1.125rem;color:rgba(255,255,255,0.92);max-width:60ch}
+
+/* Header used on pages where logo + title appear side-by-side */
+.hero-header{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.hero-header img{display:block;width:6rem;height:auto}
+.hero-header h1{margin:0}
+
+/* Buttons */
+.btn{display:inline-block;padding:0.6rem 1rem;border-radius:6px;text-decoration:none;cursor:pointer;border:0;font-weight:600}
+.btn-primary{
+  background:var(--color-accent);
+  color:#111;
+  /* layered shadow to create depth */
+  box-shadow: 0 22px 44px rgba(20,30,25,0.14), 0 8px 22px rgba(201,162,78,0.22);
+  position:relative;
+  z-index:9999;
+  /* lifted by default so it "pops out" */
+  transform: translateY(-6px);
+  transition: transform 200ms cubic-bezier(.2,.8,.2,1), box-shadow 200ms ease, opacity 200ms ease;
+}
+
+.btn-primary:hover{
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 28px 48px rgba(20,30,25,0.14), 0 10px 30px rgba(201,162,78,0.22);
+}
+
+.btn-primary:active{
+  /* push down when clicked */
+  transform: translateY(2px) scale(0.995);
+  box-shadow: 0 6px 12px rgba(20,30,25,0.08);
+}
+
+.btn-primary:focus{outline:3px solid rgba(201,162,78,0.18);outline-offset:3px}
+.btn-outline{background:transparent;border:1px solid rgba(31,90,68,0.12);color:var(--color-primary)}
+
+
+
+/* Cards + grid */
+.card{background:var(--color-surface);border-radius:8px;padding:1rem;box-shadow:0 6px 18px rgba(20,30,25,0.06)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+
+/* Footer */
+.footer{padding:2rem 0;background:transparent;color:var(--color-muted);font-size:0.95rem}
+
+/* Utilities */
+.lead{font-size:1.15rem;color:var(--color-muted);font-weight:700}
+.small{font-size:0.9rem;color:var(--color-muted)}
+
+/* Responsive tweaks */
+@media (max-width:760px){
+  .nav{display:none}
+  .hero{min-height:40vh;padding:2rem 0}
+  .container{padding:1rem}
+}
+
+/* Dome half-circle bleed on the right side of the viewport */
+.dome-cut{
+  position:fixed;
+  right:0;
+  top:0%;
+  width:min(100vh,100vw);
+  height:min(100vh,100vw);
+  transform: translateX(50%); /* move half of the circle off-screen */
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow: 0 20px 60px rgba(20,30,25,0.25);
+  z-index:1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+}
+.dome-cut img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Slight transparency for decorative dome images */
+.dome-cut img{opacity:0.60}
+.home-right img{opacity:0.92}
+
+@media (max-width:1100px){
+  .dome-cut{width:min(40vh,40vw);height:min(40vh,40vw);top:38%}
+}
+@media (max-width:760px){
+  .dome-cut{display:none}
+}
+
+/* Theme-level scrollbar token: keep visuals centralized but scoped to panes
+   Use `.left-pane` and `.right-pane` so both side panes show identical scrollbars. */
+.left-pane,
+.right-pane{
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) var(--color-primary);
+}
+
+/* WebKit browsers (Chrome, Edge, Safari) - scoped to pane classes */
+.left-pane::-webkit-scrollbar,
+.right-pane::-webkit-scrollbar{width:10px}
+.left-pane::-webkit-scrollbar-track,
+.right-pane::-webkit-scrollbar-track{background:var(--color-bg);border-radius:999px}
+.left-pane::-webkit-scrollbar-thumb,
+.right-pane::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--color-secondary),var(--color-primary));border-radius:999px;border:3px solid transparent;background-clip:padding-box}
+.left-pane::-webkit-scrollbar-thumb:hover,
+.right-pane::-webkit-scrollbar-thumb:hover{filter:brightness(.95)}
+
+/* small refinement for horizontal scroll if present */
+.left-pane::-webkit-scrollbar-corner,
+.right-pane::-webkit-scrollbar-corner{background:transparent}

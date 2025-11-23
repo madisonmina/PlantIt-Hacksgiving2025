@@ -1,0 +1,12 @@
+@import "mitchell-domes.css";
+.show-dome {
+    width: 50%;
+    height: 100vh;
+    /* solid black background for the middle panel */
+    background-color: #000;
+    background: #000; /* fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* ensure readable text */
+}
