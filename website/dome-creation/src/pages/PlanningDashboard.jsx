@@ -1,15 +1,14 @@
 import React from 'react';
+import LeftPane from '../components/LeftPane.jsx';
+import RightPane from '../components/RightPane.jsx';
+import ShowDome from '../components/ShowDome.jsx';
 
 export default function PlanningDashboard({ onClick }){
   return (
-    <main className="container" style={{paddingTop: '3rem', paddingBottom: '3rem'}}>
-      <div className="card">
-        <h1 style={{fontFamily: 'var(--font-heading)'}}>Planning Dashboard</h1>
-        <p className="lead">This is the planning dashboard placeholder. Replace with your planning UI.</p>
-        <div style={{marginTop: 12}}>
-          <button className="btn btn-outline" onClick={onClick}>Back</button>
-        </div>
-      </div>
-    </main>
+    <div className="home-row">
+        <LeftPane></LeftPane>
+        <ShowDome></ShowDome>
+        <RightPane></RightPane>
+    </div>
   );
 }
