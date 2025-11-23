@@ -1,0 +1,10 @@
+@import "mitchell-domes.css";
+.left-pane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 25%;
+    background-color: var(--color-primary);
+}
