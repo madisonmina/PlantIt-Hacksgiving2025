@@ -1,3 +1,5 @@
 import sys
 
-return sys.argv[1]
+def get_groups():
+    
+    return sys.argv[1]
