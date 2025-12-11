@@ -1,6 +1,20 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/RyjKsRDC)
-# HacksGiving 2025
-Thank you for participating in the HacksGiving 2025 competition!
-In collaboriation with MSOE and the Milwaukee Domes Alliance, AI-Club is hoping to provide an opportunity for our talented students to gain more hands-on AI experience for the chance to compete in a $6000, 3-day hackathon -- as well as build solutions that ultimately help a non-profit organization that traditionally is unable to invest into AI solutions!
+## Hacksgiving: AI for Good Hackathon
 
-For more information about what an appropriate solution looks like, as well as important dates, please refer to the [Hacksgiving 2025 Hackathon Rubric](https://msoe365.sharepoint.com/:w:/s/MSOEAI/EWieBmmsRr9BuM91iywVTTIBMr5M9ipwXy8F2m_zf7GDag?e=TL2ATX)
+November 20–23, 2025 • Discovery World, Milwaukee
+
+Hacksgiving is MSOE’s annual AI-for-good hackathon where students use data, creativity, and engineering skills to support a local nonprofit with an AI-driven solution. This year’s partner was the Milwaukee Domes Alliance, a nonprofit that supports the educational and cultural programming of the Mitchell Park Domes.
+
+Students received a problem statement and dataset from the nonprofit, then spent three days designing, building, and presenting solutions for the chance to win prize funding. Hacksgiving encourages hands-on creativity, real-world problem solving, and community impact. The event was created by Dr. Jeremy Kedziora, MSOE PieperPower Endowed Chair in AI.
+
+### Our Solution: Plant It!
+
+Plant It! is an AI-powered plant-planning tool designed for the Milwaukee Domes horticulture team.
+Our goal: streamline plant selection by automating plant matching, trait analysis, and cost-aware planning.
+
+Using the Companion Plant dataset, a global plant trait database, and a Random Forest classifier, our team engineered pairwise trait features to recommend compatible plant groupings. Plant It! also emphasizes scalability and real-world use:
+- Simple, adaptable model
+- Standalone React app
+- Local compute-friendly
+- Integrates into existing planning workflows
+
+**Guided by data, grown by creativity — we can Plant It!**
